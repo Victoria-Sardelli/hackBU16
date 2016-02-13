@@ -8,9 +8,33 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/bootstrap.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="css/about_us.css" text="text/css" rel="stylesheet" />
     </head>
     
     <body>
+        <!-- NAV BAR -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header" >
+                    <a class="pull-left" href="schedule.html">
+                        <div><img id="logo" src="img/Placeholder.png"/></div>
+                    </a>
+                    <!-- if logged in, lead to schedule -->
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="my_plans.html">My Plans</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li class="active"><a href="about_us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- FIX THIS -->
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+                
+            </div>
+        </nav>
         <div class="container-fluid" style="font-family: 'Palatino Linotype', Palatino, serif;">
             <h1>About Us</h1>
             <p>We are a group of friends from RIT!</p>
@@ -21,6 +45,13 @@
                 <div class="col-xs-3" style="background-color:lavenderblush;">Gregory</div>
             </div>
         </div>
+        
+        <!-- footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">Created by Greg Goh, Victoria Sardelli, Orens Xhagolli, and Matthew Ku</p>
+            </div>
+        </footer>
     </body>
 
 </html>
