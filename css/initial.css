@@ -1,0 +1,66 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#logo {
+    max-width: 100px;
+    margin-top: 7px;
+}
+
+.jumbotron {
+    text-align: center;
+    padding-top: 4%;
+    background-color: #9ED1BB;
+}
+
+.row {
+    text-align: center;
+    max-width: 100%;
+    margin-top: 3%;
+}
+
+#info {
+    font-size: 150%;
+}
+
+#info p {
+    width: 75%;
+    margin-left: auto;
+    margin-right: 5%;
+    
+    margin-bottom: 3%;
+}
+
+#sign_up .panel {
+    width: 75%;
+    margin-right: auto;
+    margin-left: 5%;
+    
+    
+}
+
+#sign_up .panel-heading {
+    background-color: #9ED1BB;
+}
+
+#sign_up .panel-body {
+    text-align: left;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+
+.navbar-inverse {
+    background-color: #333333;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>.active>a {
+    background-color: #333333;
+}
