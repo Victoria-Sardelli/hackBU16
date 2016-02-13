@@ -1,2 +1,4 @@
 # hackBU16
-our hackBU hack; schedule-maker
+# Chalk
+
+Our HackBU hack: a schedule-maker called Chalk.
