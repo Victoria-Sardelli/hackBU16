@@ -16,10 +16,9 @@
                     <a class="pull-left" href="schedule.html">
                         <div><img id="logo" src="img/Placeholder.png"/></div>
                     </a>
-                    <!-- if logged in, lead to schedule -->
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="my_plans.html">My Plans</a></li>
+                    <li class="active"><a href="my_plans.html">Add Task</a></li>
                     <li><a href="schedule.html">Schedule</a></li>
                     <li><a href="profile.html">Profile</a></li>
                     <li><a href="about_us.html">About Us</a></li>
@@ -32,6 +31,32 @@
                 
             </div>
         </nav>
+        
+        <!-- add new item form -->
+        <div id="form_div">
+            <h2>Add a New Item to my Schedule</h2><br />
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input name="name" id="name" type="text" placeholder="Name" class="form-control">
+                </div>                
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea rows="4" id="description" placeholder="Description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="due_date">Due Date:</label>
+                    <input name="due_date" id="due_date" type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="duration">Approx. Hours Task Will Take:</label>
+                    <input name="duration" id="duration" type="number" class="form-control">
+                </div> 
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+       
+        
         <!-- footer -->
         <footer class="footer">
             <div class="container">
