@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#g!8o27m-%j8+@7_&_a&!+76_t5j64wrj^$zv%ov$tghl-uae='
+SECRET_KEY = 'qcs2p&pau3$)7mp6gus)h)-7*iu(u3axomtpnr@a*p5c#wlguh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,7 +55,9 @@ ROOT_URLCONF = 'chalk.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'scheduler/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
