@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth import authenticate, logout, login, decorators
+from datetime import date
 
 from . import models
 
@@ -24,7 +25,8 @@ def login(request):
                 'message': 'Username or password are incorrect',
             })
 
-@login_required
+
+@decorators.login_required
 def logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('chalk_home'))
@@ -42,7 +44,7 @@ def home(request):
             return render(request, 'index.html', {
                 'error': 'Passwords do not match!',
             })
-        user = User(username, email=email, password=password)
+        user = models.User(username=username, email=email, password=password)
         user.save()
         authenticate(user.username, user.password)
         return HttpResponseRedirect(reverse("chalk_schedule"))
@@ -58,12 +60,29 @@ def new_entries(request):
         priority = request.POST.get('priority')
         if not priority.isdigit():
             priority = 0
-        activity = Activity(title, description, approx_time, due_date, priority)
+        activity = models.Activity(title=title,
+                                   description=description,
+                                   approx_time=approx_time,
+                                   due_date=due_date,
+                                   priority=priority)
+        activity.owner = request.user
         activity.save()
-        return render(request, 'entries.html', {
-            'message': 'Successfully added task.'
-        })
+        if activity is not None:
+            return render(request, 'entries.html', {
+                'success': True,
+                'message': 'Successfully added task.',
+            })
+        else:
+            return render(request, 'entries.html', {
+                'success': False,
+                'message': 'Could not add task.',
+            })
 
 
 def schedule(request):
-    return HttpResponse("Welcome!")
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('chalk_home'))
+    act_list = models.Activity.objects.get(owner=request.user, due_date__gte=date.today())
+    return render(request, 'schedule.html', {
+        'activities': act_list,
+    })
