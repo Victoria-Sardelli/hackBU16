@@ -50,6 +50,10 @@ html, body {
     text-align: left;
 }
 
+#pwd {
+    margin-bottom: 1%;
+}
+
 footer {
     text-align: center;
     width: 100%;

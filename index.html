@@ -92,7 +92,9 @@
         <script type="text/javascript" src="js/pwstrength-bootstrap-1.2.10.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#pwd').pwstrength();
+                $('#pwd').pwstrength({
+                    ui: { showVerdictsInsideProgressBar: true }
+                });
             })
         </script>
         
