@@ -3,9 +3,9 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    username = models.CharField(primary_key=True)
-    email = models.CharField()
-    password = models.CharField()
+    username = models.CharField(primary_key=True, max_length=32)
+    email = models.CharField(max_length=64)
+    password = models.CharField(max_length=32)
 
 
 class Activity(models.Model):
