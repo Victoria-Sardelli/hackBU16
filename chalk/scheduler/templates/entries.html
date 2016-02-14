@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- add new item form -->
+<div id="form_div">
+    <h2>Add a New Item to my Schedule</h2><br />
+    {% if success == True %}
+    <div class="alert alert-success">
+      <strong>Success!</strong> {{message}}
+    </div>
+    {% elif success == False %}
+    <div class="alert alert-danger">
+      <strong>Error!</strong> {{message}}
+    </div>
+    {% endif %}
+    <form role="form" method="post">
+        {%csrf_token%}
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input name="title" id="title" type="text" placeholder="Title" class="form-control">
+        </div>                
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea rows="4" name="description" id="description" placeholder="Description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="due_date">Due Date:</label>
+            <input name="due_date" id="due_date" type="date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="duration">Approx. Hours Task Will Take:</label>
+            <input name="duration" id="duration" type="number" class="form-control">
+        </div> 
+        <div class="form-group">
+            <label for="priority">Priority of Task (5 = very high priority):</label>
+            <label class="radio-inline">
+                <input type="radio" name="priority">0
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="priority">1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="priority">2
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="priority">3
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="priority">4
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="priority">5
+            </label>
+        </div> 
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+{% endblock %}

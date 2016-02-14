@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- JUMBOTRON -->    
+<div class="jumbotron">
+    <h1>Chalk</h1>
+    <p>Write it down, get it done.</p>
+</div>
+
+<!-- info and sign up = 2 sections divided in half -->
+<div class="container-fluid">
+    <div class="row">
+        <div id="info" class="col-sm-6">
+            <p style="font-size:150%;">Do you find yourself overwhelmed with all the things you have to do?</p>
+            <p>Don't know what to do first?</p>
+            <p>That's alright, neither did we, until we made Chalk.</p>
+            <ul>Just tell Chalk:
+                <li>what you need to get done</li>
+                <li>when it has to be done by</li>
+                <li>how important it is to you</li>
+            </ul>
+            <p>and Chalk will help you figure out how to go about your week.</p>
+            <p>Chalk will take care of it, so you don't have to.</p>
+        </div>
+        <div id="sign_up" class="col-sm-6">
+            {% if error %}
+            <div class="alert alert-danger">
+              <strong>Error!</strong> {{error}}
+            </div>
+            {% endif %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Sign up now</div>
+                <!-- sign up form -->
+                <div class="panel-body">
+                    <form role="form" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" name="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" class="form-control" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" class="form-control" id="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password_conf">Retype Password:</label>
+                            <input type="password" name="password_conf" class="form-control" id="password_conf">
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/static/js/pwstrength-bootstrap-1.2.10.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#password').pwstrength({
+            ui: { showVerdictsInsideProgressBar: true }
+        });
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- add new item form -->
+<div id="form_div">
+    <h2>Add a Work Time to my schedule</h2><br />
+    {% if success == True %}
+    <div class="alert alert-success">
+      <strong>Success!</strong> {{message}}
+    </div>
+    {% elif success == False %}
+    <div class="alert alert-danger">
+      <strong>Error!</strong> {{message}}
+    </div>
+    {% endif %}
+    <form role="form" method="post">
+        <div class="form-group">
+            <label for="start_time">Start Time:</label>
+            <input name="start_time" id="start_time" type="date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="end_time">End Time:</label>
+            <input name="end_time" id="end_time" type="date" class="form-control">
+        </div> 
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+{% endblock %}

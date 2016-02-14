@@ -14,12 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import url
+from django.contrib.auth.views import logout
 from . import views
 
 urlpatterns = [
-    url(r'^', views.home, name='chalk_home'),
     url(r'^login', views.login, name='chalk_login'),
     url(r'^schedule', views.schedule, name='chalk_schedule'),
     url(r'^entry', views.new_entries, name='chalk_entry'),
-    url(r'^logout', views.logout, name='chalk_logout'),
+    url(r'^logout', logout, {
+        'next_page': '/login'
+    }),
+    url(r'^about', views.about, name='chalk_about'),
+    url(r'^contact', views.contact, name='chalk_contact'),
+    url(r'^free', views.free, name='chalk_free'),
+    url(r'^', views.home, name='chalk_home'),
 ]

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+        
+<div class="container">
+    <div id="calendar"></div>
+</div>
+
+<script src='/static/js/moment.js'></script>
+<script src='/static/js/fullcalendar.js'></script>
+<script>
+    $(document).ready(function() {
+
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            // put your options and callbacks here
+            header: {
+                right: 'agendaWeek prev,next'
+            },
+            defaultView: 'agendaWeek',
+            events: [ {{jq | safe}}]
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Chalk</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/static/css/fullcalendar.css" rel="stylesheet" />
+        <link href="/static/css/initial.css" text="text/css" rel="stylesheet" />
+        <link rel="icon" type="/static/image/ico" href="img/Icon_rounded.png" />
+     </head>
+    
+    <body>
+        <!-- NAV BAR -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header" >
+                    <a class="pull-left" href="/">
+                        <div><img id="logo" src="/static/img/Placeholder.png"/></div>
+                    </a>
+                    <!-- if logged in, lead to schedule -->
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/entry">Add Task</a></li>
+                    <li><a href="/free">Add Times</a></li>                    
+                    <li><a href="/schedule">Schedule</a></li>
+                    <!--<li><a href="profile.html">Profile</a></li>-->
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+                {% if not user or not user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">Login</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+        
+        {% block content %} {% endblock %}
+        
+        <!-- footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">Created by Victoria Sardelli, Gregory Goh, Orens Xhagolli, and Matthew Ku</p>
+            </div>
+        </footer>
+    </body>
+
+</html>
