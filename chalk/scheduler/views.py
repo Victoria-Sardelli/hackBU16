@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, logout, login, models
+from django.contrib.auth import authenticate, logout, login
+
+from . import models
 
 
 # Create your views here.
@@ -40,14 +42,27 @@ def home(request):
             return render(request, 'index.html', {
                 'error': 'Passwords do not match!',
             })
-        user = models.User.objects.create_user(username, email=email, password=password)
+        user = User(username, email=email, password=password)
         user.save()
         authenticate(user.username, user.password)
         return HttpResponseRedirect(reverse("chalk_schedule"))
     return render(request, 'index.html')
 
+
 def new_entries(request):
-    pass
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        approx_time = request.POST.get('approx_time')
+        due_date = request.POST.get('due_date')
+        priority = request.POST.get('priority')
+        if not priority.isdigit():
+            priority = 0
+        activity = Activity(title, description, approx_time, due_date, priority)
+        activity.save()
+        return render(request, 'entries.html', {
+            'message': 'Successfully added task.'
+        })
 
 
 def schedule(request):
