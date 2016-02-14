@@ -22,7 +22,7 @@ def login(request):
                 'message': 'Username or password are incorrect',
             })
 
-
+@login_required
 def logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('chalk_home'))
